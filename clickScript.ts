@@ -22,7 +22,7 @@ function startClicking(xpath) {
             setTimeout(function() {
                 console.log('Resuming clicking...');
                 startClicking(xpath);  // 休眠 15 秒后重新开始
-            }, 30000);  // 15000 毫秒 = 15 秒
+            }, 15000);  // 15000 毫秒 = 15 秒
 
             clickCount = 0;  // 重置计数器
         }

@@ -30,6 +30,7 @@ class ClickScript {
         this.click()
     }
 
+    //自动每隔15s点击两次
     click() {
         let result = document.evaluate(link1XPath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
         const btn = result.singleNodeValue;
@@ -57,6 +58,18 @@ class ClickScript {
 
 (function() {
     window.addEventListener("load", () => {
-        new ClickScript();
+        // 每隔1秒检查元素是否加载
+        const interval = setInterval(() => {
+            const targetButton = document.querySelector("button.auxo-btn.auxo-btn-primary");
+            if (targetButton) {
+                console.log("找到按钮元素！");
+                clearInterval(interval); // 找到后停止检查
+                //加载自动点击函数
+                new ClickScript();
+            }
+            else {
+                console.log("未找到按钮元素！");
+            }
+        }, 5000);
     });
 })();
